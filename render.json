@@ -1,0 +1,42 @@
+{   
+    "test_case": "中移任务机器人",
+    "time":{
+        "starting_time": 1550489342,
+        "end_time": 1550575742,
+        "duration": 100000
+    },
+    "number": {
+        "case_no": 600,
+        "success_no": 550,
+        "error_no": 50,
+        "skip_no": 0
+    },
+    "result": [
+        {   
+            "status": true,
+            "excepted": "???",
+            "actual": "???",
+            "test_set": "???",
+            "exe_time": 32879,
+            "comment": "???"
+        },
+        {
+            "status": false,
+            "excepted": "???",
+            "actual": "???",
+            "test_set": "???",
+            "exe_time": 32987,
+            "comment": "???"
+        }
+    ],
+    "details": [
+        {
+            "debug_info": "???",
+            "api_return": "???"
+        },
+        {
+            "debug_info": "???",
+            "api_return": "???"
+        }
+    ]
+}
