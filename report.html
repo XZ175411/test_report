@@ -4,9 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">    
+    <title>测试报告</title>
+    <style>
+        body{
+            height: 1000px;
+            background-color: #eee;
+        }
+        nav{
+            background-color: #fff;
+            height: 60px;
+            text-align: center;
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #337ab7;
+            border-bottom: 1px solid #eee;
+        }
+        .nav2{
+            background-color: #fff;
+            height: 30px;
+            text-align: center;
+            padding-top: 7px;
+            font-size: 10px;
+            font-weight: 800;
+            color: #337ab7;
+            transition: height 1s;
+            -moz-transition: height 1s; 
+            -webkit-transition: height 1s;
+            -o-transition: height 1s;
+            transition: font-size 1s;
+            -moz-transition: font-size 1s; 
+            -webkit-transition: font-size 1s;
+            -o-transition: font-size 1s;
+        }
+        .total{
+            height: 600px;
+            background-color: #fff;
+            margin-top: 20px;
+        }
+        .panel-group{
+            margin-top: 80px;
+        }
+        h4{
+            display: inline-block;
+        }
+        .panel-default>.panel-heading{
+            background-color: #fff;
+        }
+        .footer{
+            height: 70px;
+            background-color: #fff;
+            text-align: center;
+        }
+        .panel-heading span{
+           margin: 5px;
+           float: right;
+           font-size: 10px;
+           color: #666;
+        }
+    </style>
 </head>
 <body>
+    <nav class="navbar-fixed-top">
+        <span>中移一期测试报告</span>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="panel-group col-md-12" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading"  data-toggle="collapse" data-parent="#accordion" 
+                    href="#collapseOne" style="cursor: pointer">
+                        <h4 class="panel-title">
+                            <a>报告汇总</a>
+                        </h4>
+                        <span class="glyphicon glyphicon-remove"  style="cursor:default"></span>
+                        <span class="glyphicon glyphicon-chevron-up"></span>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <p>111</p>
+                            <p>111</p>
+                            <p>111</p>
+                            <p>111</p>
+                            <p>111</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer navbar-fixed-bottom" style="padding-top:10px">
+            <p>Designed & Powered by Test-team in Shanghai</p>
+            <p>CopyRight © 2018 - 2019</p>
+        </div>
+    </div>
     
+
+
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                var topp = $(document).scrollTop();
+                if(topp > 90){
+                    $('nav').addClass('nav2');
+                }else{
+                    $('nav').removeClass('nav2');
+                }
+            })
+        })
+    </script>
 </body>
 </html>
