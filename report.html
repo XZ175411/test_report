@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,7 +90,7 @@
                             <a>报告汇总</a>
                         </h4>
                         <span class="glyphicon glyphicon-remove"  style="cursor:default"></span>
-                        <span class="glyphicon glyphicon-chevron-up"></span>
+                        <span class="glyphicon glyphicon-chevron-up" id="collapse-icon"></span>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="row">
@@ -169,6 +169,24 @@
                 }else{
                     $('nav').removeClass('nav2');
                 }
+            })
+        })
+        $('#accordion').on('show.bs.collapse',function() {
+            $('#collapse-icon').css({
+                'transform':'rotate(360deg)',
+                '-ms-transform':'rotate(360deg)',
+                '-moz-transform':'rotate(360deg)',
+                '-webkit-transform':'rotate(360deg)',
+                '-o-transform':'rotate(360deg)'
+            })
+        })
+        $('#accordion').on('hide.bs.collapse',function() {
+            $('#collapse-icon').css({
+                'transform':'rotate(180deg)',
+                '-ms-transform':'rotate(180deg)',
+                '-moz-transform':'rotate(180deg)',
+                '-webkit-transform':'rotate(180deg)',
+                '-o-transform':'rotate(180deg)'
             })
         })
     var myChart = echarts.init(document.getElementById('main'));
