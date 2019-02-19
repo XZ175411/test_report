@@ -52,6 +52,7 @@
         }
         .panel-default>.panel-heading{
             background-color: #fff;
+            border-bottom: 1px solid #eee;
         }
         .footer{
             height: 70px;
@@ -63,6 +64,15 @@
            float: right;
            font-size: 10px;
            color: #666;
+        }
+        .panel-body{
+            padding-top: 30px;
+        }
+        .control-label{
+            color: #337ab7;
+        }
+        .form-group{
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -83,12 +93,57 @@
                         <span class="glyphicon glyphicon-chevron-up"></span>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                            <p>111</p>
-                            <p>111</p>
-                            <p>111</p>
-                            <p>111</p>
-                            <p>111</p>
+                        <div class="row">
+                            <div class="panel-body">
+                                <div class="col-md-6" style="border-right:1px solid #eee">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">用例名称：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" value="中移一期对接接口测试" disabled>
+                                            </div>                                
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">用例总数：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" value="783" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" style="color:green">用例通过：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" value="761" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" style="color:red">用例失败：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" value="22" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" style="color:#b6bd0a">用例跳过：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" value="0" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">开始时间：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" value="2019-02-20 15:39:00" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">运行时间：</label>
+                                            <div class="col-sm-5">
+                                                <input type="text" class="form-control" value="480s" disabled>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6 chart" id="main" style="width: 600px;height:300px;">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,17 +159,55 @@
 
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
     <script>
         $(document).ready(function(){
             $(window).scroll(function(){
                 var topp = $(document).scrollTop();
-                if(topp > 90){
+                if(topp > 70){
                     $('nav').addClass('nav2');
                 }else{
                     $('nav').removeClass('nav2');
                 }
             })
         })
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+        title : {
+            text: '测试用例执行结果',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['通过','失败','跳过']
+        },
+        series : [
+            {
+                name: '运行结果',
+                type: 'pie',
+                radius : '55%',
+                center: ['50%', '60%'],
+                data:[
+                    {value:22, name:'失败'},
+                    {value:0, name:'跳过'},
+                    {value:761, name:'通过'},
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+    myChart.setOption(option);
     </script>
 </body>
 </html>
