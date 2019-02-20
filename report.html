@@ -9,7 +9,6 @@
     <title>测试报告</title>
     <style>
         body{
-            height: 1000px;
             background-color: #eee;
         }
         nav{
@@ -58,6 +57,7 @@
             height: 70px;
             background-color: #fff;
             text-align: center;
+            border-radius: 10px;
         }
         .panel-heading span{
            margin: 5px;
@@ -73,6 +73,40 @@
         }
         .form-group{
             margin-bottom: 15px;
+        }
+        .details{
+            height: 600px;
+            padding: 0 30px 20px 30px;
+        }
+        #accordion-2{
+            margin-top: 20px;
+        }
+        .group{
+            width: 100%;
+            height: 50px;
+            margin-top: 15px;
+            background-color: #337ab7;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .group .control-label{
+            color: #fff;
+        }
+        select{
+            margin-left: -130px;
+            margin-top: -5px;
+        }
+        .result{
+            height: 30px;
+            width: 310px;
+            background-color: #fff;
+            float: right;
+            margin-top: -4px;
+            padding: 5px 3px 0 3px;
+        }
+        .depart{
+            color: #333;
+            margin: 0 5px 0 5px;
         }
     </style>
 </head>
@@ -110,7 +144,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" style="color:green">用例通过：</label>
+                                            <label class="col-sm-2 control-label" style="color:green">用例成功：</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control" value="761" disabled>
                                             </div>
@@ -122,7 +156,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" style="color:#b6bd0a">用例跳过：</label>
+                                            <label class="col-sm-2 control-label" style="color:#f8ac59">用例跳过：</label>
                                             <div class="col-sm-5">
                                                 <input type="text" class="form-control" value="0" disabled>
                                             </div>
@@ -148,11 +182,64 @@
                     </div>
                 </div>
             </div>
+            <div class="panel-group col-md-12" id="accordion-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading"  data-toggle="collapse" data-parent="#accordion-2" 
+                    href="#collapseTwo" style="cursor: pointer">
+                        <h4 class="panel-title">
+                            <a>详细数据</a>
+                        </h4>
+                        <span class="glyphicon glyphicon-remove"  style="cursor:default"></span>
+                        <span class="glyphicon glyphicon-chevron-up" id="collapse-icon-2"></span>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse in">
+                        <div class="row">
+                            <div class="panel-body details">
+                                <div class="col-md-12 group">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">测试集名称：</label>
+                                            <div class="col-sm-2">
+                                                <select class="form-control input-sm">
+                                                    <option>全部测试集</option>
+                                                    <option id="set-1">查询余额</option>
+                                                    <option id="set-2">积分查询</option>
+                                                    <option id="set-3">积分兑换</option>
+                                                </select>
+                                            </div>                                
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" style="margin-left:-120px">测试结果：</label>
+                                            <div class="col-sm-2">
+                                                <select class="form-control input-sm">
+                                                    <option>全部结果</option>
+                                                    <option>成功</option>
+                                                    <option>失败</option>
+                                                    <option>跳过</option>
+                                                </select>
+                                            </div>                                
+                                        </div>
+                                        <div class="result">
+                                            <span style="color:#337ab7">用例数:319</span>
+                                            <span class="depart">|</span>
+                                            <span style="color:green">成功:319</span>
+                                            <span class="depart">|</span>
+                                            <span style="color:red">失败:319</span>
+                                            <span class="depart">|</span>
+                                            <span style="color:#f8ac59">跳过:319</span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="footer navbar-fixed-bottom" style="padding-top:10px">
-            <p>Designed & Powered by Test-team in Shanghai</p>
-            <p>CopyRight © 2018 - 2019</p>
-        </div>
+    </div>
+    <div class="footer" style="padding-top:10px">
+        <p>Designed & Powered by Test-team in Shanghai</p>
+        <p>CopyRight © 2018 - 2019</p>
     </div>
     
 
@@ -189,6 +276,24 @@
                 '-o-transform':'rotate(180deg)'
             })
         })
+        $('#accordion-2').on('show.bs.collapse',function() {
+            $('#collapse-icon-2').css({
+                'transform':'rotate(360deg)',
+                '-ms-transform':'rotate(360deg)',
+                '-moz-transform':'rotate(360deg)',
+                '-webkit-transform':'rotate(360deg)',
+                '-o-transform':'rotate(360deg)'
+            })
+        })
+        $('#accordion-2').on('hide.bs.collapse',function() {
+            $('#collapse-icon-2').css({
+                'transform':'rotate(180deg)',
+                '-ms-transform':'rotate(180deg)',
+                '-moz-transform':'rotate(180deg)',
+                '-webkit-transform':'rotate(180deg)',
+                '-o-transform':'rotate(180deg)'
+            })
+        })
     var myChart = echarts.init(document.getElementById('main'));
     var option = {
         title : {
@@ -202,7 +307,7 @@
         legend: {
             orient: 'vertical',
             left: 'left',
-            data: ['通过','失败','跳过']
+            data: ['成功','失败','跳过']
         },
         series : [
             {
@@ -213,7 +318,7 @@
                 data:[
                     {value:22, name:'失败'},
                     {value:0, name:'跳过'},
-                    {value:761, name:'通过'},
+                    {value:761, name:'成功'},
                 ],
                 itemStyle: {
                     emphasis: {
