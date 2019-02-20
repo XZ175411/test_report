@@ -1,5 +1,5 @@
 {   
-    "test_case": "中移任务机器人",
+    "test_case": "中移意图",
     "time":{
         "starting_time": 1550489342,
         "end_time": 1550575742,
@@ -12,30 +12,23 @@
         "skip_no": 0
     },
     "result": [
-        {   
+        {   "name": "查询余额",
             "status": true,
+            "request_param": "???",
             "excepted": "???",
             "actual": "???",
-            "test_set": "???",
             "exe_time": 32879,
-            "comment": "???"
-
-        },
-        {
-            "status": false,
-            "excepted": "???",
-            "actual": "???",
-            "test_set": "???",
-            "exe_time": 32987,
-            "comment": "???"
-        }
-    ],
-    "details": [
-        {
             "debug_info": "???",
             "api_return": "???"
+
         },
-        {
+        {   
+            "name": "积分兑换",
+            "status": false,
+            "request_param": "???",
+            "excepted": "???",
+            "actual": "???",
+            "exe_time": 32987,
             "debug_info": "???",
             "api_return": "???"
         }

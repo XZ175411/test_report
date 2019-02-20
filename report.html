@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">    
+    <link href="https://cdn.bootcss.com/animate.css/3.7.0/animate.css" rel="stylesheet">
     <title>测试报告</title>
     <style>
         body{
             background-color: #eee;
+            overflow-x: hidden;
         }
         nav{
             background-color: #fff;
@@ -37,11 +38,6 @@
             -moz-transition: font-size 1s; 
             -webkit-transition: font-size 1s;
             -o-transition: font-size 1s;
-        }
-        .total{
-            height: 600px;
-            background-color: #fff;
-            margin-top: 20px;
         }
         .panel-group{
             margin-top: 80px;
@@ -75,7 +71,7 @@
             margin-bottom: 15px;
         }
         .details{
-            height: 600px;
+            height: 800px;
             padding: 0 30px 20px 30px;
         }
         #accordion-2{
@@ -108,11 +104,21 @@
             color: #333;
             margin: 0 5px 0 5px;
         }
+        table{
+            margin-top: 80px;
+        }
+        #accordion{
+            z-index: 999;
+        }
+        tr{
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+    <script type="text/x-jsrender" id="Tmpl">
     <nav class="navbar-fixed-top">
-        <span>中移一期测试报告</span>
+        <span>{{:test_case}}测试报告</span>
     </nav>
     <div class="container-fluid">
         <div class="row">
@@ -230,6 +236,55 @@
                                         </div>
                                     </form>
                                 </div>
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>编号</th>
+                                            <th>测试集</th>
+                                            <th>请求参数</th>
+                                            <th>期待回复</th>
+                                            <th>实际回复</th>
+                                            <th>状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr data-toggle="modal" data-target="#myModal">
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                        </tr>
+                                        <tr>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                        </tr>
+                                        <tr>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                            <td>占位</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                                            </div>
+                                            <div class="modal-body">something..</div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,20 +296,66 @@
         <p>Designed & Powered by Test-team in Shanghai</p>
         <p>CopyRight © 2018 - 2019</p>
     </div>
+]   </script>
+
+       
     
 
 
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsrender/1.0.2/jsrender.js"></script>    
     <script>
+        var resultData = {   
+            "test_case": "中移意图接口测试",
+            "time":{
+                "starting_time": 1550489342,
+                "end_time": 1550575742,
+                "duration": 100000
+            },
+            "number": {
+                "case_no": 600,
+                "success_no": 550,
+                "error_no": 50,
+                "skip_no": 0
+            },
+            "result": [
+                {   "name": "查询余额",
+                    "status": true,
+                    "request_param": "???",
+                    "excepted": "???",
+                    "actual": "???",
+                    "exe_time": 32879,
+                    "debug_info": "???",
+                    "api_return": "???"
+
+                },
+                {   
+                    "name": "积分兑换",
+                    "status": false,
+                    "request_param": "???",
+                    "excepted": "???",
+                    "actual": "???",
+                    "exe_time": 32987,
+                    "debug_info": "???",
+                    "api_return": "???"
+                }
+            ]
+        }
+        // render
+        var renderData = $("#Tmpl").render(resultData);
+        $("body").append(renderData);
+
         $(document).ready(function(){
             $(window).scroll(function(){
                 var topp = $(document).scrollTop();
                 if(topp > 70){
                     $('nav').addClass('nav2');
+                    $('#collapseOne').collapse('hide');
                 }else{
                     $('nav').removeClass('nav2');
+                    // $('#collapseOne').collapse('show');
                 }
             })
         })
